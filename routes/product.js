@@ -97,6 +97,10 @@ Router.put('/products/:id', (req, res) => {
     res.redirect('/products/login');
   }
   else {
+    const { title } = req.body;
+    console.log('title', title);
+    const { body } = req.body;
+    console.log('body', body);
     const { id } = req.params;
     let productToEdit = Products_Inv.getItemById(id);
     if (req.body.product !== productToEdit.product) {
