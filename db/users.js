@@ -4,8 +4,8 @@ class Users {
     this._count = 1;
     this._storage = [];
     this.add({
-      username: 'jeff',
-      password: 'jeff',
+      username: process.env.USERNAME,
+      password: process.env.PASSWORD,
     });
   }
   all() {
@@ -13,6 +13,7 @@ class Users {
     return [...this._storage];
   }
   getUserByInfo(username, password) {
+    console.log('username, password =', username, password)
     return this._storage.filter(item => username == item.username && password == item.password)[0];
   }
   getUserById(id) {
@@ -25,6 +26,7 @@ class Users {
     user.id = this._count;
     this._storage.push(user);
     this._count++;
+    console.log('user.id ',user.id)
     return user.id;
   }
   // editPById(id) {
